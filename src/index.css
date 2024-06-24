@@ -1,12 +1,23 @@
-* {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 300;
+*,
+::before,
+::after {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 h1, h2, h3 {
   color: green;
+}
+
+span {
+  color: red;
+  font-size: 14px;
 }
 
 /* Home */
@@ -43,11 +54,26 @@ h1, h2, h3 {
   max-width: 500px;
   display: flex;
   justify-content: center;
-  border: 3px solid rgb(37, 33, 30);
   border-radius: 10px;
   flex-direction: column;
   padding: 20px;
   gap: 15px;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+
+input::placeholder {
+  font-size: 12px;
+  font-style: italic;
+}
+
+button {
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+  margin: 10px 0;
 }
 
 
