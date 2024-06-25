@@ -88,6 +88,6 @@ POST /auth/login: Log in an existing user.
 For any questions or suggestions, please contact:
 
 - Name: Sanobar Fatema
-- Email: sanobarfatima96@example.com
+- Email: sanobarfatima96@gmail.com
 - GitHub: sanobaaar
 
