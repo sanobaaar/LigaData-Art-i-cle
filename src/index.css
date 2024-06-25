@@ -6,22 +6,39 @@
   margin: 0;
 }
 
-html, body {
+html, body, section {
   height: 100%;
   width: 100%;
+  background-color: #EBF4F6;
 }
 
-h1, h2, h3 {
-  color: green;
+h1, h3 {
+  color: #088395;
+}
+
+h2, h4 {
+  color: #323434;
 }
 
 span {
-  color: red;
+  color: rgb(129, 13, 13);
   font-size: 14px;
 }
 
-/* Home */
+/* Navbar */
 
+.navbar .logged {
+  margin-left: 60rem;
+}
+
+.nav-link:hover {
+  color: #071952;
+}
+
+/* End of Navbar */
+
+
+/* Home */
 .background-image {
   background-image: url(https://images.pexels.com/photos/207732/pexels-photo-207732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
   height: 100vh;
@@ -36,19 +53,25 @@ span {
   background-color: azure;
   opacity: 80%;
   position: absolute;
-  top: 10px;
-  left: 0;
+  top: 8rem;
+  left: 6rem;
   max-width: 1000px;
   padding: 5rem;
-  margin: 12rem;
+  margin: 5rem;
   text-align: center;
   border-radius: 10px;
 }
 
+#about {
+  height: 100%;
+  display: block;
+  text-align: justify;
+  padding: 2rem;
+}
+
 /* End Homepage */
 
-/* LoginForm */
-
+/* LoginForm & SignUp */
 .form-login {
   margin: 5rem 0 0 25rem;
   max-width: 500px;
@@ -67,14 +90,40 @@ input::placeholder {
 }
 
 button {
-  background-color: green;
+  background-color: #088395;
   color: white;
+  font-size: 14px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
   padding: 10px;
   margin: 10px 0;
 }
 
+/* End Login Form & SignUp Form  */
 
-/* End Login Form  */
+/* Articles */
+
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 65px;
+}
+
+.article {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-footer:last-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* End of Articles */

@@ -1,7 +1,19 @@
 import React from "react"
 import { Container, Nav, Navbar } from "react-bootstrap"
+import { handleSuccess } from "../utils"
+import { useNavigate } from "react-router-dom"
 
-const Head = () => {
+function Head({ isAuthenticated }) {
+  const navigate = useNavigate()
+
+  const logout = e => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("loggedInUser")
+    handleSuccess("User logged out!")
+    setTimeout(() => {
+      navigate("/")
+    }, 1500)
+  }
   return (
     <Navbar className="navbar" bg="light" data-bs-theme="light" sticky="top">
       <Container>
@@ -10,10 +22,15 @@ const Head = () => {
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/articles">Articles</Nav.Link>
           <Nav.Link href="/about">About</Nav.Link>
-          <Nav.Link style={{ paddingLeft: "53rem" }} href="/signup">
-            SignUp
-          </Nav.Link>
-          <Nav.Link href="/login">LogIn</Nav.Link>
+          {isAuthenticated ? (
+            <Nav.Link className="logged" onClick={logout} href="/">
+              Log Out
+            </Nav.Link>
+          ) : (
+            <Nav.Link className="logged" href="/login">
+              Log In
+            </Nav.Link>
+          )}
         </Nav>
       </Container>
     </Navbar>

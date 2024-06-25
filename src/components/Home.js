@@ -1,66 +1,26 @@
-import React, { useEffect, useState } from "react"
-import Login from "./Login"
-import { Button } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
-import { handleError, handleSuccess } from "../utils"
+import React from "react"
 import { ToastContainer } from "react-toastify"
+import About from "./About"
 
-const Home = () => {
-  const [loggedInUser, setLoggedInUser] = useState("")
-  const [articles, setArticles] = useState("")
-
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    setLoggedInUser(localStorage.getItem("loggedInUser"))
-  }, [])
-
-  const fetchArticles = async () => {
-    try {
-      const url = "http://localhost:8080/articles"
-      const headers = {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      }
-      const response = await fetch(url, headers)
-      const result = await response.json()
-      console.log("articles:", result)
-      setArticles(result)
-      console.log(articles)
-    } catch (error) {
-      handleError(error)
-    }
-  }
-
-  useEffect(() => {
-    fetchArticles()
-  }, [])
-
-  const logout = e => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("loggedInUser")
-    handleSuccess("User logged out!")
-    setTimeout(() => {
-      navigate("/")
-    }, 1500)
-  }
-
+const Home = ({ loggedInUser }) => {
   return (
     <>
       <section>
         <div className="background-image">
           <div className="home-text">
-            <h1>Publishing Made Easy!</h1>
-            {loggedInUser ? <div>{articles && articles?.map(item => <h1>{item.title}</h1>)}</div> : null}
+            {loggedInUser ? <h1>Hello {loggedInUser} </h1> : null}
+            
+            <h2>Publishing Made Easy! </h2>
             <br></br>
-
-            <Button variant="success">Get Started!</Button>
-            {loggedInUser ? <button onClick={logout}>Logout!</button> : null}
+            <h4>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae culpa, perspiciatis aspernatur
+              veritatis eveniet aliquam cumque impedit nostrum odio. Voluptatum.
+            </h4>
           </div>
         </div>
         <ToastContainer />
       </section>
+      <About />
     </>
   )
 }

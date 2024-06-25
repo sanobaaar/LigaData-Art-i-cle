@@ -56,7 +56,7 @@ const Login = () => {
   }
 
   return (
-    <>
+    <div className="container">
       <section>
         <div className="container">
           <form className="form-login" onSubmit={handleSubmit}>
@@ -92,7 +92,7 @@ const Login = () => {
           <ToastContainer />
         </div>
       </section>
-    </>
+    </div>
   )
 }
 
