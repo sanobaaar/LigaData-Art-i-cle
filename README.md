@@ -19,8 +19,8 @@ This is a frontend application created with the help of Reactjs that allows user
 
 
 ## 🔗 Links
-[![JIRA](https://sanobarfatima96.atlassian.net/jira/software/projects/KAN/boards/1))]
-[![linkedin]([https://www.linkedin.com/sanobarfatema11](https://www.linkedin.com/in/sanobarfatema11/))
+- [JIRA](https://sanobarfatima96.atlassian.net/jira/software/projects/KAN/boards/1)
+- [LINKEDIN](https://www.linkedin.com/in/sanobarfatema11/)
 
 
 ## Installation
