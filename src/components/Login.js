@@ -81,13 +81,13 @@ const Login = () => {
               required
             />
 
-            <button type="submit" value="Submit">
-              Submit
+            <button type="submit">
+              Log In
             </button>
-            <span style={{ textAlign: "center" }}>
-              Create a new account!
-              <a href="/signup">Sign up!</a>
-            </span>
+            <strong style={{ textAlign: "center" }}>
+              Create a new account
+              <a href="/signup"> Sign up!</a>
+            </strong>
           </form>
           <ToastContainer />
         </div>

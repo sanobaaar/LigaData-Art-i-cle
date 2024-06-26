@@ -8,8 +8,9 @@ const Home = ({ loggedInUser }) => {
       <section>
         <div className="background-image">
           <div className="home-text">
+            {/* if user is logged in, greet user - returns loggedInUser info from localStorage */}
             {loggedInUser ? <h1>Hello {loggedInUser} </h1> : null}
-            
+
             <h2>Publishing Made Easy! </h2>
             <br></br>
             <h4>

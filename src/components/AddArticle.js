@@ -6,18 +6,45 @@ import { handleError, handleSuccess } from "../utils"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
-function AddArticle({ show, onClose, children, fetchArticles }) {
-  const handleClose = () => (show = false)
-  const handleShow = () => (show = false)
-
+function AddArticle({ showModal, handleClose, fetchArticles }) {
+  const [selectedFile, setSelectedFile] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
   const navigate = useNavigate()
 
   const [articleData, setArticleData] = useState({
     title: "",
     content: "",
+    date: "",
+    image: null,
   })
 
+  const handleFileChange = e => {
+    const file = e.target.files[0]
+    setSelectedFile(file)
+
+    console.log(selectedFile)
+
+    // Display the selected image preview
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      setImageUrl(reader.result)
+      console.log(imageUrl)
+    }
+    if (file) {
+      console.log(file)
+      reader.readAsDataURL(file)
+    }
+
+    console.log(articleData);
+
+    setArticleData(prevState => ({
+      ...prevState,
+      image: imageUrl,
+    }))
+  }
+
   const handleChange = e => {
+    e.preventDefault()
     const { name, value } = e.target
     console.log(name, value)
     const copyArticleData = { ...articleData }
@@ -28,7 +55,7 @@ function AddArticle({ show, onClose, children, fetchArticles }) {
 
   const addArticle = async e => {
     e.preventDefault()
-    const { title, content, date } = articleData
+    const { title, content, date, image } = articleData
     if (!title || !content) {
       handleError("All fields are required!")
     }
@@ -57,6 +84,13 @@ function AddArticle({ show, onClose, children, fetchArticles }) {
         handleError(message)
       }
       console.log(result)
+      handleClose()
+      setArticleData({
+        title: "",
+        content: "",
+        date: "",
+        image: "",
+      })
     } catch (err) {
       return handleError(err)
     }
@@ -64,12 +98,12 @@ function AddArticle({ show, onClose, children, fetchArticles }) {
 
   return (
     <>
-      <Modal show={show} onClick={onClose}>
+      <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Article</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form className="modal-form" onSubmit={addArticle}>
+          <form className="form-add" onSubmit={addArticle}>
             <label>Title:</label>
             <input
               type="text"
@@ -82,27 +116,38 @@ function AddArticle({ show, onClose, children, fetchArticles }) {
             />
 
             <label>Content:</label>
-            <input
-              type="text"
+            <textarea
               name="content"
-              placeholder="Enter content"
-              onChange={handleChange}
+              className="form-control"
               value={articleData.content}
-              autoComplete="off"
+              onChange={handleChange}
+              placeholder="Enter your content"
+              rows="5"
             />
 
-            <button type="submit" value="Submit">
-              Submit
-            </button>
+            <label>Date:</label>
+            <input
+              type="date"
+              name="date"
+              onChange={handleChange}
+              autoComplete="off"
+              value={articleData.date}
+              required
+            />
+
+            <label>Image:</label>
+            <input type="file" name="image" onChange={handleFileChange} />
+
+            <button type="submit">Submit</button>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          {/* <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={addArticle}>
             Publish
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
       <ToastContainer />

@@ -66,7 +66,6 @@ const Signup = () => {
               name="firstName"
               placeholder="Enter your first name"
               onChange={handleChange}
-              autoComplete="off"
               value={formData.firstName}
               required
             />
@@ -78,7 +77,6 @@ const Signup = () => {
               placeholder="Enter your last name"
               onChange={handleChange}
               value={formData.lastName}
-              autoComplete="off"
             />
 
             <label>Email:</label>
@@ -89,6 +87,7 @@ const Signup = () => {
               onChange={handleChange}
               value={formData.email}
               autoComplete="off"
+              required
             />
 
             <label>Password:</label>
@@ -98,16 +97,14 @@ const Signup = () => {
               placeholder="Enter your password"
               onChange={handleChange}
               value={formData.password}
-              autoComplete="off"
+              required
             />
 
-            <button type="submit" value="Submit">
-              Submit
-            </button>
-            <span style={{ textAlign: "center" }}>
+            <button type="submit">Create Account</button>
+            <strong style={{ textAlign: "center" }}>
               Already have an account?
-              <a href="/login">Log in!</a>
-            </span>
+              <a href="/login"> Log in!</a>
+            </strong>
           </form>
           <ToastContainer />
         </div>

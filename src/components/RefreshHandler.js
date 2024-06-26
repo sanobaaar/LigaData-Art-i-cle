@@ -11,10 +11,6 @@ function RefreshHandler({ setIsAuthenticated, setLoggedInUser }) {
 
       const loggedInUser = localStorage.getItem("loggedInUser")
       setLoggedInUser(loggedInUser)
-
-      if (location.pathname === "/" || location.pathname === "/login" || location.pathname === "/signup") {
-        navigate("/")
-      }
     }
   }, [location, navigate, setIsAuthenticated, setLoggedInUser])
 

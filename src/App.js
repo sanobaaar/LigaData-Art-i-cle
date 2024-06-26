@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 
 import Home from "./components/Home"
 import Login from "./components/Login"
@@ -11,12 +11,14 @@ import { useEffect, useState } from "react"
 import RefreshHandler from "./components/RefreshHandler"
 import { handleError } from "./utils"
 import EditArticle from "./components/EditArticle"
+import About from "./components/About"
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [loggedInUser, setLoggedInUser] = useState("")
   const [articles, setArticles] = useState([])
 
+  //articles can only be fetched when user is logged in - authenticated
   const fetchArticles = async () => {
     try {
       const url = "http://localhost:8080/articles"
@@ -35,20 +37,24 @@ function App() {
     }
   }
 
+  //call for articles only when user log in state changes
   useEffect(() => {
     fetchArticles()
   }, [loggedInUser])
 
   return (
     <>
+      {/* gets token from localStorage and sets user info */}
       <RefreshHandler setIsAuthenticated={setIsAuthenticated} setLoggedInUser={setLoggedInUser} />
 
       <Head isAuthenticated={isAuthenticated} />
 
       <Routes>
         <Route path="/" element={<Home loggedInUser={loggedInUser} />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
         <Route
           path="/articles"
           element={<Articles isAuthenticated={isAuthenticated} articles={articles} fetchArticles={fetchArticles} />}

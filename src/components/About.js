@@ -1,5 +1,5 @@
 import React from "react"
-import { Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const About = () => {
   return (
@@ -20,8 +20,14 @@ const About = () => {
           Cumque, nam officia libero cupiditate alias labore, asperiores atque ipsam fuga dignissimos voluptatum.
           Asperiores dolor beatae quod quas delectus aliquam optio!
         </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias doloribus dicta, repellat qui eveniet esse
+          maxime odio possimus sed dolorum.
+        </p>
         <br></br>
-        <button>Review our articles!</button>
+        <Link to={"/articles"}>
+          <button>Review our articles!</button>
+        </Link>
       </div>
     </section>
   )

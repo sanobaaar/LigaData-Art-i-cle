@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react"
-import { handleError } from "../utils"
-import { CardGroup } from "react-bootstrap"
+import React, { useState } from "react"
 import AddArticle from "./AddArticle"
 import ArticleCard from "./ArticleCard"
 
 const Articles = ({ isAuthenticated, articles, fetchArticles }) => {
   const [showModal, setShowModal] = useState(false)
 
-  const toggleModal = () => {
-    setShowModal(!showModal)
-  }
+  const handleClose = () => setShowModal(false)
+  const handleShow = () => setShowModal(true)
 
   return (
     <>
       <div className="articles">
+        {/* If not authenticated - request for login ELSE show articles */}
         {!isAuthenticated ? (
           <h3>
             Please <a href="/login">login</a> to view the articles!
@@ -23,11 +21,17 @@ const Articles = ({ isAuthenticated, articles, fetchArticles }) => {
             <div>
               <span style={{ display: "flex", justifyContent: "space-between" }}>
                 <h1>Articles</h1>
-                <button onClick={toggleModal}>Add +</button>
+                <button onClick={handleShow}>Add +</button>
               </span>
-              <AddArticle show={showModal} onClose={toggleModal} fetchArticles={fetchArticles} />
+              <AddArticle
+                showModal={showModal}
+                handleClose={handleClose}
+                onClick={e => e.stopPropagation()} //disables modal from closing on clicks
+                fetchArticles={fetchArticles}
+              />
             </div>
             <div>
+              {/* Check if articles is an array and size greater than 0 to show them in individual card */}
               {Array.isArray(articles) && articles.length > 0 ? (
                 <div>
                   {articles?.map((article, index) => (

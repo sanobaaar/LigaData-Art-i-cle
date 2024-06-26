@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 function Head({ isAuthenticated }) {
   const navigate = useNavigate()
 
+  //logs out user and deletes localStorage token
   const logout = e => {
     localStorage.removeItem("token")
     localStorage.removeItem("loggedInUser")
@@ -21,7 +22,11 @@ function Head({ isAuthenticated }) {
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/articles">Articles</Nav.Link>
-          <Nav.Link href="/about">About</Nav.Link>
+          <Nav.Link href="/about" spy={true} smooth={true} duration={500}>
+            About
+          </Nav.Link>
+
+          {/* if user is logged in - shows option to logout - ELSE - login */}
           {isAuthenticated ? (
             <Nav.Link className="logged" onClick={logout} href="/">
               Log Out

@@ -1,9 +1,18 @@
 import React from "react"
 import { Card, CardGroup } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
-import SingleArticle from "./SingleArticle"
 
 const ArticleCard = ({ article }) => {
+
+  // Format as MM/DD/YYYY
+  const formatDate = dateStr => {
+    const date = new Date(dateStr)
+    const day = date.getDate()
+    const month = date.getMonth() + 1 
+    const year = date.getFullYear()
+    return `${month}/${day}/${year}`
+  }
+
   return (
     <div className="article">
       <CardGroup>
@@ -14,7 +23,8 @@ const ArticleCard = ({ article }) => {
             <Card.Text>{article.content}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">{article.date}</small> <br></br>
+            <small className="text-muted">{formatDate(article.date)}</small> <br></br>
+            {/* Redirects to SingleArticle component */}
             <Link to={`/article/${article._id}`}>Read More</Link>
           </Card.Footer>
         </Card>
