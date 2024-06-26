@@ -37,8 +37,8 @@ Install the project with npm
 ## API Reference
 
 ### Authentication
-POST /auth/signup: Sign up a new user.
-POST /auth/login: Log in an existing user.
+- POST /auth/signup: Sign up a new user.
+- POST /auth/login: Log in an existing user.
 
 #### Get all articles
 
