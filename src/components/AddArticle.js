@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
 function AddArticle({ showModal, handleClose, fetchArticles }) {
-  const [selectedFile, setSelectedFile] = useState("")
+  const [selectedFile, setSelectedFile] = useState(null)
   const [imageUrl, setImageUrl] = useState("")
   const navigate = useNavigate()
 
@@ -19,6 +19,7 @@ function AddArticle({ showModal, handleClose, fetchArticles }) {
   })
 
   const handleFileChange = e => {
+    e.preventDefault()
     const file = e.target.files[0]
     setSelectedFile(file)
 
@@ -35,7 +36,7 @@ function AddArticle({ showModal, handleClose, fetchArticles }) {
       reader.readAsDataURL(file)
     }
 
-    console.log(articleData);
+    console.log(articleData)
 
     setArticleData(prevState => ({
       ...prevState,
