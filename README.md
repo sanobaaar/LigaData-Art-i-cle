@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# LigaData-Art-i-cle
-=======
+
 
 # Articles - LigaData
 
