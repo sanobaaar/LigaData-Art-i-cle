@@ -25,11 +25,13 @@ This is a frontend application created with the help of Reactjs that allows user
 
 ## Installation
 
-Install my-project with npm
+Install the project with npm
 
 ```bash
-  npm install my-project
-  cd my-project
+  git clone https://github.com/sanobaaar/LigaData-Art-i-cle
+  npm install
+  npm start
+  
 ```
     
 ## API Reference
