@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# LigaData-Art-i-cle
-=======
+
 
 # Articles - LigaData
 
@@ -94,4 +92,5 @@ For any questions or suggestions, please contact:
 - Email: sanobarfatima96@gmail.com
 - GitHub: sanobaaar
 
->>>>>>> master
+
+
