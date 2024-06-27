@@ -81,6 +81,10 @@ git clone https://github.com/sanobaaar/LigaData-Art-i-cle
 |     id    | `Object` | **Required**. Token for authenticated users |
 
 ## Usage 
+
+### User Registration & Log In
+- User can register as a new user to see the articles and other info
+- User can log in if already existing and manipulate the articles
 ### Managing Articles
 - Once logged in, navigate to the articles page.
 - You can create a new article by clicking the "Add Article" button.
