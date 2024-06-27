@@ -29,15 +29,16 @@ This is a frontend application created with the help of Reactjs that allows user
 Install my-project with npm
 
 ```bash
-  npm install my-project
-  cd my-project
+git clone https://github.com/sanobaaar/LigaData-Art-i-cle
+  npm install
+ 
 ```
     
 ## API Reference
 
 ### Authentication
-POST /auth/signup: Sign up a new user.
-POST /auth/login: Log in an existing user.
+- POST /auth/signup: Sign up a new user.
+- POST /auth/login: Log in an existing user.
 
 #### Get all articles
 
