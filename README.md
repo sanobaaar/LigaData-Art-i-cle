@@ -31,6 +31,7 @@ Install my-project with npm
 ```bash
 git clone https://github.com/sanobaaar/LigaData-Art-i-cle
   npm install
+npm start
  
 ```
     
