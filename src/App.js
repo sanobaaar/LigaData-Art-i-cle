@@ -30,6 +30,8 @@ function App() {
       const response = await fetch(url, headers)
       const result = await response.json()
       console.log("articles:", result)
+      console.log("articles:", result)
+
       setArticles(result)
       console.log(articles)
     } catch (error) {
